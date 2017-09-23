@@ -21,3 +21,6 @@ _testmain.go
 
 *.exe
 2gobytes
+fixture/sample.go
+fixture/hello.go
+fixture/sample_files/data.go
