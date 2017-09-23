@@ -46,8 +46,15 @@ func main() {
 		},
 		cli.StringFlag{
 			Name:  "array-name, a",
-			Value: "",
 			Usage: "name of the byte array",
+		},
+		cli.BoolFlag{
+			Name:  "no-index, I",
+			Usage: "generate no index map",
+		},
+		cli.StringFlag{
+			Name:  "index",
+			Usage: "name of the index map variable",
 		},
 		cli.BoolFlag{
 			Name:  "no-generated-info, ni",
@@ -73,6 +80,8 @@ func cliAction(c *cli.Context) {
 	perm := c.Uint64("perm")
 	code.PackageName = c.String("package-name")
 	varName := c.String("array-name")
+	code.Index = !c.Bool("no-index")
+	code.IndexName = c.String("index")
 	code.GenerateInfo = !c.Bool("no-generated-info")
 	code.GeneratePackage = !c.Bool("no-package")
 
