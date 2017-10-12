@@ -28,7 +28,7 @@ func main() {
 	app.Flags = []cli.Flag{
 		cli.StringSliceFlag{
 			Name:  "input, i",
-			Usage: "path to the input json file",
+			Usage: "path to the input file",
 		},
 		cli.StringFlag{
 			Name:  "output, o",
@@ -111,7 +111,7 @@ func cliAction(c *cli.Context) {
 
 	// write or print generated code
 	if output != "" {
-		fmt.Println("OK, write to file", output)
+		// fmt.Println("OK, write to file", output)
 		ioutil.WriteFile(output, genCode, os.FileMode(perm))
 		os.Exit(0)
 	}
