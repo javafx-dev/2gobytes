@@ -56,11 +56,14 @@ func FilepathToStructName(fPath string) string {
 	return string(bytes.Join([][]byte{upper, rest}, nil))
 }
 
-func (g *Generator) AddFile(fPath string) error {
+func (g *Generator) AddFile(fPath, varName string) error {
 	tmp := Var{}
 	err := tmp.SetDataFromFile(fPath)
 	if err != nil {
 		return err
+	}
+	if varName != "" {
+		tmp.Name = varName
 	}
 	g.Data = append(g.Data, tmp)
 	return nil

@@ -89,7 +89,7 @@ func cliAction(c *cli.Context) {
 	if len(input) != 0 {
 		for i := 0; i < len(input); i++ {
 			// read the input file
-			code.AddFile(input[i])
+			code.AddFile(input[i], varName)
 		}
 	} else {
 		// read the input from stdin
