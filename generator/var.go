@@ -42,5 +42,11 @@ func (v *Var) SetDataFromFile(fPath string) error {
 }
 
 func (v *Var) GenerateCode() string {
-	return "// " + v.Name + " store the data of '" + v.File + "' as a byte array.\nvar " + v.Name + " []byte = []byte{" + string(v.Data) + "\n}\n\n"
+	comment := ""
+	if v.File == "" {
+		comment = "// " + v.Name + " store the data as a byte array.\n"
+	} else {
+		comment = "// " + v.Name + " store the data of '" + v.File + "' as a byte array.\n"
+	}
+	return comment + "var " + v.Name + " []byte = []byte{" + string(v.Data) + "\n}\n"
 }
